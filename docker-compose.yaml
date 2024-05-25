@@ -30,10 +30,9 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./CRAIMAS/staticfiles:/static
       - /etc/letsencrypt:/etc/letsencrypt
-      - /var/www/html:/var/www/html
     depends_on:
       - django
-      
+
   certbot:
         image: certbot/certbot:v1.7.0
         volumes:
