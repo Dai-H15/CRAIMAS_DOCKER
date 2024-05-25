@@ -38,7 +38,7 @@ services:
         volumes:
           - /etc/letsencrypt:/etc/letsencrypt
           - /var/www/html:/var/www/html
-        command: ["certbot renew"]
+        command: ["--rm certbot renew"]
 
 
 volumes:
