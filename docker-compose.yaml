@@ -29,11 +29,11 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./CRAIMAS/staticfiles:/static
-      - ./certbot:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
     depends_on:
       - django
-    restart: always
+      
   certbot:
         image: certbot/certbot:v1.7.0
         volumes:
