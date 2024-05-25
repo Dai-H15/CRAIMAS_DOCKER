@@ -38,7 +38,7 @@ services:
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
-    command: renew 
+    command: renew --force-renewal
 
 
 volumes:
