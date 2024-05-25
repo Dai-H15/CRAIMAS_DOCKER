@@ -34,11 +34,11 @@ services:
       - django
 
   certbot:
-        image: certbot/certbot:v1.7.0
-        volumes:
-          - /etc/letsencrypt:/etc/letsencrypt
-          - /var/www/html:/var/www/html
-        command: "certbot renew"
+    image: certbot/certbot:v1.7.0
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/html:/var/www/html
+    command: certbot renew --webroot -w /var/www/html --force-renewal
 
 
 volumes:
