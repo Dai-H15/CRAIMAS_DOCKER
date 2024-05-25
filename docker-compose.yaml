@@ -24,7 +24,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - 800:80
+      - 80:80
       - 443:443
     volumes:
       - ./nginx:/etc/nginx/conf.d
@@ -40,7 +40,7 @@ services:
         volumes:
           - /etc/letsencrypt:/etc/letsencrypt
           - /var/www/html:/var/www/html
-        command: ["certonly --webroot -w /var/www/html -d craimas.com"]
+        command: ["--version"]
 
 
 volumes:
