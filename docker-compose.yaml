@@ -24,12 +24,24 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - 80:80
+      - 800:80
+      - 443:443
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./CRAIMAS/staticfiles:/static
+      - ./certbot:/etc/letsencrypt
+      - /var/www/html:/var/www/html
     depends_on:
       - django
+    command: "/bin/sh -c 'while :; do sleep 20d & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    restart: always
+  certbot:
+        image: certbot/certbot:v1.7.0
+        volumes:
+          - /etc/letsencrypt:/etc/letsencrypt
+          - /var/www/html:/var/www/html
+        command: ["--version"]
+
 
 volumes:
   postgres_data:
