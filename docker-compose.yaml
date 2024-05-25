@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  django:
+    build: ./CRAIMAS
+    command: gunicorn -b 0.0.0.0:8000 settings.wsgi
+    expose:
+      - "8000"
+    volumes:
+      - ./CRAIMAS:/CRAIMAS
+    depends_on:
+      - postgres
+
+
+  postgres:
+    image: postgres:15.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 800:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./CRAIMAS/staticfiles:/static
+    depends_on:
+      - django
+
+volumes:
+  postgres_data:
