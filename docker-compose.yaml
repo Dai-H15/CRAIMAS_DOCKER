@@ -24,7 +24,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - 800:80
+      - 80:80
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./CRAIMAS/staticfiles:/static
