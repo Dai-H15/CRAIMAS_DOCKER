@@ -33,7 +33,6 @@ services:
       - /var/www/html:/var/www/html
     depends_on:
       - django
-    command: "/bin/sh -c 'while :; do sleep 20d & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     restart: always
   certbot:
         image: certbot/certbot:v1.7.0
