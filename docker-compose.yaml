@@ -14,6 +14,7 @@ services:
     image: postgres:15.4
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/postgres_backup
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -41,3 +42,4 @@ services:
 
 volumes:
   postgres_data:
+  postgres_backup:
