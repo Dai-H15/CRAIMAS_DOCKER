@@ -1,0 +1,1 @@
+docker compose exec postgres sh -c "pg_dump postgres -U > ./postgres_backup/db_backup.dmp"
