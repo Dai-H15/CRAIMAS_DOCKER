@@ -1,6 +1,6 @@
 sudo docker compose up -d
 
-docker compose exec django python manage.py makemigrations main view_sheet task_calendar authUser management
+docker compose exec django python manage.py makemigrations main view_sheet task_calendar authUser management support
 
 docker compose exec django python manage.py migrate
 
