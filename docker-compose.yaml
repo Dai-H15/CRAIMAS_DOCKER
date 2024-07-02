@@ -29,6 +29,7 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - ./CRAIMAS/staticfiles:/static
       - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/html:/var/www/html
     depends_on:
       - django
 
