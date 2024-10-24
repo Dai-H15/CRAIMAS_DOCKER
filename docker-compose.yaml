@@ -32,15 +32,16 @@ services:
       - /var/www/html:/var/www/html
     depends_on:
       - django
-
   certbot:
-    image: certbot/certbot:v1.7.0
+    image: certbot/certbot:latest
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/www/html:/var/www/html
-    command: renew --force-renewal
     depends_on:
       - nginx
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 61d & wait $${!}; done;'"
+
+
 
 
 volumes:
